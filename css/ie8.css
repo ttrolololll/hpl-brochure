@@ -1,0 +1,30 @@
+#sitemap-hotels {
+	background: url(../images/sitemap-hotel.jpg) no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+	height: 100%;
+	width: 100%;
+	min-height: 100%;
+	min-width: 100%;
+}
+#sitemap-resorts {
+	background: url(../images/sitemap-resorts.jpg) no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+	height: 100%;
+	min-height: 100%;
+}
+#sitemap-properties {
+	background: url(../images/sitemap-properties.jpg) no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+	height: 100%;
+	min-height: 100%;
+}
+#sitemap-lifestyle {
+	background: url(../images/sitemap-lifestyle.jpg) no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+	height: 100%;
+	min-height: 100%;
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		
+		<!-- saved from url=(0014)about:internet -->
+	
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		
+		<title>Hotel Properties Limited</title>
+		
+		<link rel="stylesheet" media="all" href="../css/style.css" />
+		<link rel="stylesheet" media="all" href="../css/jquery.vegas.css" />
+		
+		<script src="../js/jquery.js"></script>
+		<script src="../js/jquery.vegas.js"></script>
+		<script src="../js/jquery.easing.min.js"></script>
+		<script src="../js/html5shiv.js"></script>
+		
+		<!-- Custom CSS & JS -->
+		<!--[if lte IE 8]>
+			<link rel="stylesheet" media="all" href="ie8.css" />
+		<![endif]-->
+		<script>
+			$(document).ready(function() {
+			
+				// Hides contents and fades them in sequence
+				$('body').css('display', 'none');
+				$('body').fadeIn(2000);
+				$('header').css('display', 'none');
+				$('header').delay(2150).fadeIn(2000);
+				
+				$('#sitemap-hotels').hide();
+				$('#sitemap-resorts').hide();
+				$('#sitemap-properties').hide();
+				$('#sitemap-lifestyle').hide();
+				
+				$('#sitemap-hotels').delay(500).fadeIn(2000);
+				$('#sitemap-resorts').delay(1050).fadeIn(2000);
+				$('#sitemap-properties').delay(1600).fadeIn(2000);
+				$('#sitemap-lifestyle').delay(2150).fadeIn(1500);
+					
+				$('#sitemap article').hide();
+				$('#sitemap-hotels article').delay(2250).fadeIn(3000);
+				$('#sitemap-resorts article').delay(2750).fadeIn(3000);
+				$('#sitemap-properties article').delay(3250).fadeIn(3000);
+				$('#sitemap-lifestyle article').delay(3750).fadeIn(3000);
+				
+				// Redirects page when a link is clicked
+				$('a').click(function(event) {
+					event.preventDefault();
+					linkLocation = this.href;
+					$('header').fadeOut(1000);
+					$('body').fadeOut(1000, redirectPage);
+					$.vegas('destroy');
+					$.vegas('stop');
+				});
+				
+				function redirectPage() {
+					window.location = linkLocation;
+				}
+				
+				// Top Navigation BG overlay
+				$('#nav-top ul li a').append('<span class="nav-top-rest"></span>');
+				$('#nav-top ul li a').append('<span class="nav-top-hover"></span>');
+				
+				// Fade in / out effect for top navigation
+				$('#nav-top ul li a').hover(
+					function() {
+						$(this).children('.nav-top-rest').stop().animate({'opacity': 0}, 700);
+						$(this).children('.nav-top-hover').stop().animate({'opacity': 1}, 700);
+					},
+					function() {
+						$(this).children('.nav-top-rest').stop().animate({'opacity': 1}, 700);
+						$(this).children('.nav-top-hover').stop().animate({'opacity': 0}, 700);
+					}
+				);
+			});
+		</script>
+		<!-- END Custom CSS & JS -->
+
+	</head>
+	
+	<body>
+
+		<header>
+		
+			<p><a href="http://www.hotelprop.com/" target="_blank">Hotel Properties Limited</a></p>
+			
+			<nav id="nav-top">
+				<ul>
+					<!--<li id="nav-h"><a href="hotels.html">H</a></li>
+					<li id="nav-r"><a href="resorts.html">R</a></li>
+					<li id="nav-p"><a href="property.html">P</a></li>
+					<li id="nav-l"><a href="lifestyle.html">L</a></li>-->
+					<li id="nav-home"><a href="../index.html">Home</a></li>
+					<li id="nav-list"><a href="sitemap.html">List</a></li>
+					<li id="nav-globe"><a href="map.html">Globe</a></li>
+					<li id="nav-mail"><a href="contact.html">Mail</a></li>
+				</ul>
+			</nav>
+			
+			<div class="clear"></div>
+			
+		</header>
+		
+		<div id="content">
+		
+			<section id="sitemap">
+			
+				<a href="hotels.html">
+					<div class="col3" id="sitemap-hotels">
+						<article>
+							<div class="sitemap-label">Hotels</div>
+							<h1>Stay</h1>
+							<p>Situated in some of the most well connected locations in key cities around the world, our hotels are designed to provide a spectrum of comforts, conveniences and luxury levels for every type of traveller.</p>
+						</article>
+					</div>
+				</a>
+				
+				<a href="resorts.html">
+					<div class="col3" id="sitemap-resorts">
+						<article>
+							<div class="sitemap-label">Resorts</div>
+							<h1>Relax</h1>
+							<p>Found in the most beautiful places on earth, across oceans, mountains and national parks, our resorts have consistently emerged as some of the world's most romantic, eco-conscious and award-winning holiday destinations.</p>
+						</article>
+					</div>
+				</a>
+					
+				<a href="property.html">
+					<div class="col3" id="sitemap-properties">
+						<article>
+							<div class="sitemap-label">Properties</div>
+							<h1>Residence</h1>
+							<p>Resolutely focused on developing high-end good quality residences that are distinctive for their exceptional design and well-placed locations, our award-winning projects set us apart as a niche developer of prime properties in key cities around the world.</p>
+						</article>
+					</div>
+				</a>
+				
+				<a href="lifestyle.html">
+					<div class="col3" id="sitemap-lifestyle">
+						<article>
+							<div class="sitemap-label">Lifestyle</div>
+							<h1>Indulge</h1>
+							<p>Bolstered by our expertise in hospitality and property development, the Group has extended its offerings to include lifestyle F&B concepts such as Hard Rock Cafe and Jamie's Italian, as well as premium retail experiences through The Shopping Gallery at Hilton Singapore Hotel and Forum The Shopping Mall.</p>
+						</article>
+					</div>
+				</a>
+				
+			</section>
+			
+		</div>
+		
+	</body>
+	
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+	
+		<!-- saved from url=(0014)about:internet -->
+	
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		
+		<title>Hotel Properties Limited</title>
+		
+		<link rel="stylesheet" media="all" href="../css/style.css" />
+		<link rel="stylesheet" media="all" href="../css/jquery.vegas.css" />
+		
+		<script src="../js/jquery.js"></script>
+		<script src="../js/jquery.vegas.js"></script>
+		<script src="../js/jquery.easing.min.js"></script>
+		<script src="../js/html5shiv.js"></script>
+		<script src="../js/jquery.smoothZoom.min.js"></script>
+		
+		<script>
+			jQuery(document).ready(function($){
+				
+				// Top Navigation BG overlay
+				$('#nav-top ul li a').append('<span class="nav-top-rest"></span>');
+				$('#nav-top ul li a').append('<span class="nav-top-hover"></span>');
+				
+				// Fade in / out effect for top navigation
+				$('#nav-top ul li a').hover(
+					function() {
+						$(this).children('.nav-top-rest').stop().animate({'opacity': 0}, 700);
+						$(this).children('.nav-top-hover').stop().animate({'opacity': 1}, 700);
+					},
+					function() {
+						$(this).children('.nav-top-rest').stop().animate({'opacity': 1}, 700);
+						$(this).children('.nav-top-hover').stop().animate({'opacity': 0}, 700);
+					}
+				);
+				
+				// Fade in out page
+				$('body').css('display', 'none');
+				$('body').fadeIn(2000);
+				$('header').css('display', 'none');
+				$('header').delay(2000).fadeIn(2000);
+				
+				function pageInOut(link) {
+					$(link).click(function(event) {
+						event.preventDefault();
+						linkLocation = this.href;
+						$('header').fadeOut(1000);
+						$('body').fadeOut(1000, redirectPage);
+					});
+					function redirectPage() {
+						window.location = linkLocation;
+					}
+				};
+				
+				pageInOut('#nav-top a');
+				pageInOut('#map a.pageinout');
+				pageInOut('.landmark-content a');
+				
+				// Auto-zoom when clicked from other pages
+				if (window.location.hash == '#asia-pacific') {
+					$('body').fadeIn(2000,
+						function() {
+							$('#landmark').smoothZoom('focusTo',{
+								x: 1725,
+								y: 914,
+								zoom: 100,
+								speed: 3
+							});
+						}
+					);
+				}
+				
+				// Setup map zoom plugin
+				$('#landmark').smoothZoom({
+					width: '100%',
+					height: '100%',
+					responsive: true,
+					zoom_OUT_TO_FIT: false,
+					zoom_BUTTONS_SHOW: false,
+					pan_BUTTONS_SHOW: false,
+					container: 'zoom_container'
+				});
+				
+				// Zoom to clicked area
+				$('#asia-pacific').click(function() {
+					$('#landmark').smoothZoom('focusTo',{
+						x: 1725,
+						y: 914,
+						zoom: 100,
+						speed: 3
+					});
+					return false;
+				});
+				
+				// Hides landmark content
+				$('.landmark-content').css("display", "none");
+				$('.landmark-content ul').css("opacity", "0");
+				$('.landmark-content h1').css("opacity", "0");
+				
+				// Toggle landmark display when clicked
+				$('#zoom_container .landmarks .item div').toggle(
+					function() {
+						$(this).children('.landmark-content').show(750);
+						$(this).children('.landmark-content').children('ul').delay(750).animate({"opacity": "1"}, 2000);
+						$(this).children('.landmark-content').children('h1').delay(750).animate({"opacity": "1"}, 2000);
+					},
+					function() {
+						$(this).children('.landmark-content').delay(700).hide(1000);
+						$(this).children('.landmark-content').children('ul').animate({"opacity": "0"}, 750);
+						$(this).children('.landmark-content').children('h1').animate({"opacity": "0"}, 750);
+					}
+				)
+				
+			});
+		</script>
+		
+		<style>
+			body {
+				overflow: hidden;
+			}
+		</style>
+
+	</head>
+	
+	<body>
+
+		<header>
+		
+			<p><a href="http://www.hotelprop.com/" target="_blank">Hotel Properties Limited</a></p>
+			
+			<nav id="nav-top">
+				<ul>
+					<li id="nav-h"><a href="hotels.html">H</a></li>
+					<li id="nav-r"><a href="resorts.html">R</a></li>
+					<li id="nav-p"><a href="property.html">P</a></li>
+					<li id="nav-l"><a href="lifestyle.html">L</a></li>
+					<li id="nav-home"><a href="../index.html">Home</a></li>
+					<li id="nav-list"><a href="sitemap.html">List</a></li>
+					<li id="nav-globe"><a href="map.html">Globe</a></li>
+					<li id="nav-mail"><a href="contact.html">Mail</a></li>
+				</ul>
+			</nav>
+			
+			<div class="clear"></div>
+			
+		</header>
+		
+		<section id="map">
+			
+			<div class="col4" style="width: 25%; position: absolute; z-index: 9999;">
+				<article>
+					<h1>Region</h1>
+					<p>Building on its diverse portfolio of premium properties, the Group is constantly seeking opportunities to widen and establish a stronger presence around the world.</p>
+					<ul id="region-nav">
+						<li><a class="pageinout" href="map-worldwide.html">Worldwide</a></li>
+						<li><a href="#">Africa & The Middle East</a></li>
+						<li id="asia-pacific"><a href="#">Asia Pacific</a></li>
+						<li><a href="#">Europe</a></li>
+						<li><a href="#">North America</a></li>
+					</ul>
+				</article>
+			</div>
+			
+		</section>
+		
+		<div id="map-legend">
+			<img src="../images/map-legend.png" />
+		</div>
+
+		<div id="zoom_container">
+			<img id="landmark" src="../images/worldmap2.png" />
+			
+			<div class="landmarks" data-show-at-zoom="0" data-allow-drag="true">    
+				
+				<div class="item lable" data-position="1725, 914" data-bg-color="#000000" data-bg-opacity=".7" data-show-at-zoom="0">
+					<div>
+						<a href="#">Maldives</a>
+						<div class="landmark-content">
+							<h1>Maldives</h1>
+							<ul>
+								<li><a href="rihiveli-beach.html">Rihiveli Beach Resort - Maldives</a></li>
+								<li><a href="gili-lankanfushi.html">Gili Lankanfushi - Maldives</a></li>
+								<li><a href="four-seasons-explorer.html">Four Seasons Hotel - Explorer</a></li>
+								<li><a href="four-seasons-maldives-kuda-huraa.html">Four Seasons Hotel - Kuda Huraa</a></li>
+								<li><a href="four-seasons-maldives-landaa-giraavaru.html">Four Seasons Hotel  Landaa Giraavaru</a></li>
+								<li><a href="holiday-inn-kandooma-maldives.html">Holiday Inn Kandooma - Maldives</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+ 
+			</div>
+		</div>
+	
+	
+	</body>
+	
+</html>
